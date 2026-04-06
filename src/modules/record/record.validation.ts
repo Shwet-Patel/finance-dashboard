@@ -5,7 +5,7 @@ export const recordIdSchema = z.object({
 });
 
 export const createRecordSchema = z.object({
-    amount: z.coerce.number(),
+    amount: z.coerce.number().positive('amount should be a positive number'),
     type: z.enum(['Income', 'Expense']),
     category: z.string().min(1, 'category is required'),
     note: z.string().optional(),
